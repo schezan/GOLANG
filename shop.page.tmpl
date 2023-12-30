@@ -1,0 +1,432 @@
+{{template "base" .}}
+
+{{define "content"}}
+<html>
+    <head>
+        <title></title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+    
+
+
+<div class="container">
+    <img src="./static/images/logo.jpg" width="200px" style="border-radius: 50%;border:10px double black;text-align:left;">
+
+  </div>
+
+
+
+
+
+
+
+
+
+<nav class="nav" style="border:font-size: large;">
+  
+
+  <a class="nav-link active" aria-current="page" href="./" style="color:black;padding: .2in;">Home</a>
+  <a class="nav-link" href="./#Progress" style="padding: .2in; color:black">Progress</a>
+  <a class="nav-link" href="./#Our Work" style="padding: .2in; color:black">Our Work</a>
+  <a class="nav-link" href="./#Our Greens" style="padding: .2in; color:black">Our Greens</a>
+  <a class="nav-link" href="./#Why choose Watteh Greens?" style="padding: .2in;color:black">Why Choose Watteh Greens?</a>
+  <a class="nav-link" href="./#About us" style="padding: .2in;color: black">About us</a>
+  <a class="nav-link" href="#shop Contact us"style="padding: .2in;color: black">Contact us</a><br />
+  
+ 
+  <a class="nav-link" href="#Shop Now" style="padding: .2in;color: black">Visit Our Shop</a>
+  
+</nav>
+        <h1 style="padding-top:150px;padding-bottom:80px;padding-left:80px;color:green">Shop Items</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h5 class="text-success">Mustard Microgreens <br><b><b>৳</b></b> 89.00</h5><br><img src="./static/images/farm3.png" height="175px" width="175px"><br><a class="add-to-cart text-success" href="#" data-name="Mustard Microgreens" data-price="89">Add to cart</a>
+
+        </div>
+            
+
+        <div class="col">
+            <h5 class="text-success"> Mung Bean Microgreens <br><b><b>৳</b></b> 89.00</h5><br><img src="./static/images/farm1.png" height="175px" width="175px"  ><br><a class="add-to-cart text-success" href="#" data-name="Mung Bean Microgreens" data-price="89">Add to Cart</a>
+        </div>
+        
+        
+       
+
+              
+    </div>
+    <br>
+    <br>
+    <br>
+    <label class="control-label"><b>Cart Items :</b><img src='./static/images/shoppingcart.png' height='60px' width='60px'></label><p><h5 id="CartItems1"></h5></p>
+    <a href="#Cart Summary"  class="btn btn-success" >View Cart</a>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col">
+            <h5 class="text-success"> Radish Microgreens <br><b><b>৳</b></b> 89.00</h5><br><img src="./static/images/Microgreen.jpg" height="175px" width="175px"><br><a class="add-to-cart text-success" href="#" data-name="Radish Microgreens" data-price="89">Add to Cart</a>
+        </div>
+
+         <div class="col">
+            <h5 class="text-success"> Red Spinach <br><b><b>৳</b></b> 89.00</h5><br><img src="./static/images/farm4.png" height="175px" width="175px"><br><a class="add-to-cart text-success" href="#" data-name="Red Spinach" data-price="89">Add to Cart</a>
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <label class="control-label"><b>Cart Items :</b><img src='./static/images/shoppingcart.png' height='60px' width='60px'></label><p><h5 id="CartItems2"></h5></p>
+    <a href="#Cart Summary"  class="btn btn-success" >View Cart</a>
+    <br>
+    <br>
+    <br>
+
+    <div class="row">
+
+       
+
+        <div class="col">
+            <h5 class="text-success"> Chai Seeds Microgreens <br><b><b>৳</b></b> 89.00</h5><br><img src="./static/images/farm7.png" height="175px" width="175px"  ><br><a class="add-to-cart text-success" href="#" data-name="Chai Seeds Microgreens" data-price="89">Add to Cart</a>
+        </div>
+
+        <div class="col">
+            <h5 class="text-success"> Golden Cherry Tomatoes <br><b><b>৳</b></b> 200.00</h5><br><img src="./static/images/cherry2.png" height="175px" width="175px"><br><a class="add-to-cart text-success" href="#" data-name="Golden Cherry Tomatoes" data-price="200">Add to Cart</a>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<div class="container">
+
+            <h2 id="Cart Summary" style="padding:50px;color:green">Cart Summary<img src='./static/images/shoppingcart.png' height='60px' width='60px'></h2>
+            
+            <button class="badge bg-success text-white text-center" style="font-size: 20px;" id="clear-cart">Clear Cart</button>
+</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul id="show-cart">
+                    <li>???????</li>
+                </ul>
+            </div>
+            <div class="col">You have <span id="count-cart">X</span> items in your cart</div>
+            <div class="col"><b>Total Cart: ৳ <b><span id="total-cart"></span></div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container"  style="padding-top:120px">
+    <!--        {{$orderdetails := index .Data "order"}}   -->
+            <form class="row g-3" id="orderform" method="POST" action="/shop" novalidate>
+            <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+            
+        <div class="row">    
+            <div class="col">
+
+                <label  class="control-label"><b>Name:</b></label>
+                
+                <input type="text"  minlength=1 name="Name" placeholder="Enter your name" required> 
+                    
+                
+            </div>
+            <div class="col">
+                <label  class="control-label"><b>Phone no:</b></label>
+               
+                <input type="text" name="Phone" placeholder="Enter your phone number" required>
+               
+            </div>
+        </div> 
+        <br>
+        <br>   
+        <div class="row">
+                <label  class="control-label"><b>Address</b></label>
+                
+                <input type="textarea" height=120px  width=120px  name="Address"  placeholder="Enter your Address" required>
+                    
+        </div>
+
+        <div class="row" style="padding-top:10px">
+            <label class="control-label"><b>Cart Items :</b><img src='./static/images/shoppingcart.png' height='60px' width='60px'></label><p><h5 id="CartItems"></h5></p>
+                
+            <input type="hidden"  id="totalitems" name="totalitems" value="" required>
+                    
+                
+        </div>    
+
+
+ 
+                    <input type="hidden" class="form-control" id="cart" name="cart" value="">
+                    <input type="hidden" class="form-control" id="totalprice" name="cartTotal" value="">
+                    
+                    <div class="col-12" class="text-align:center">
+                        <input class="btn btn-primary" type="submit" value="Submit Order">
+                    </div>
+        </form>
+</div>
+
+
+
+
+
+
+
+
+ 
+        
+
+       
+       
+       
+       
+       
+
+
+
+
+
+
+
+        
+
+<div class="container" style="padding-top: 100px;">
+             
+        <h2 style="color:green" id="shop Contact us"><b>Contact us<b></h2>
+            
+            
+           
+        <div class="container" style="padding-top:50px;">
+              
+              <div class="col" style="padding-top:50px"><a href="https://www.facebook.com/watteh.greens" target="_blank"><img src="./static/images/Facebook.png" height=100  width=100 style="display:inline-block" ></a></div>
+              <div class="col" style="padding-top:50px"><a href="https://www.instagram.com/watteh.greens/?fbclid=IwAR1gGHi9CzhBBTpfDzUjm9gSgHN6WVrEcBy6oMlnGN_PIxdBpMNz2q8G8lE" target="_blank"><img src="./static/images/Instagram.png"  height=100 width=100 style="display:inline-block;padding-left: 20px;"></a></div>
+              <div class="col" style="padding-top:50px"><img src="./static/images/Gmail.png" height=100 width=100 style="display:inline-block;padding-left: 20px;" ><p style="font-size:large;color: rgb(22, 20, 18);">Watteh.Green@gmail.com</p></div>
+              <div class="col" style="padding-top:50px"><img src="./static/images/Phone.png" height=100 width=100 style="padding-left:20px"><p style="font-size:large;color: rgb(22, 20, 18);">+8801732669572</p></div>
+              
+        </div>
+           
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+        <script src="./static/js/shoppingCart.js"></script>
+        
+    <!--    <script src="./static/js/jqBootstrapValidation.js"</script> -->
+
+        <script>
+
+        /*  performs javascript logic upon clicking submit(Currently disabled)
+
+            document.getElementById("cart").value=JSON.stringify(shoppingCart.listCart())
+            $("#my-form").submit(function(event){
+                
+                event.preventDefault();
+                displayCart2();
+                var customername=document.getElementById("name").value;
+                var phone=document.getElementById("phone").value;
+                var address=document.getElementById("address").value;
+                
+                
+                
+
+
+            
+                
+                alert("Order ticket generated,copy ticket and send it to links below");
+
+                document.getElementById("printname").innerHTML="Name:";
+                document.getElementById("printname1").innerHTML=customername;
+
+                document.getElementById("printphone").innerHTML="Phone:";
+                document.getElementById("printphone1").innerHTML=phone;
+
+                document.getElementById("printaddress").innerHTML="Address:";
+                document.getElementById("printaddress1").innerHTML=address;
+
+
+                document.getElementById("printcart").innerHTML="Quantity:";
+                document.getElementById("printcart1").innerHTML="Item:";
+                document.getElementById("printcart2").innerHTML="Subtotal:";
+                
+                
+                
+
+                document.getElementById("printtotal").innerHTML="Total: <b><b>৳</b></b>";
+                document.getElementById("printtotal1").innerHTML=shoppingCart.totalCart()
+
+
+
+                
+
+
+
+            });  */            
+
+            $(".add-to-cart").click(function(event){
+                event.preventDefault();
+                alert("Item added to cart");
+                var name = $(this).attr("data-name");
+                var price = Number($(this).attr("data-price"));
+
+                shoppingCart.addItemToCart(name, price, 1);
+                displayCart();
+            });
+
+            $("#clear-cart").click(function(event){
+                shoppingCart.clearCart();
+                displayCart();
+            });
+
+
+
+
+            function displayCart() {
+                var cartArray = shoppingCart.listCart();
+                console.log(cartArray);
+                var output = "";
+
+                for (var i in cartArray) {
+                    output += "<li>"
+                        +cartArray[i].name
+                        +" <input class='item-count'  type='number' data-name='"
+                        +cartArray[i].name
+                        +"' value='"+cartArray[i].count+"' readonly>"
+                        +" x "+cartArray[i].price
+                        +" = "+cartArray[i].total
+                        +" <button class='plus-item' data-name='"
+                        +cartArray[i].name+"'>+</button>"
+                        +" <button class='subtract-item' data-name='"
+                        +cartArray[i].name+"'>-</button>"
+                        +" <button class='delete-item' data-name='"
+                        +cartArray[i].name+"'>X</button>"
+                        +"</li>";
+                }
+
+
+
+                $("#show-cart").html(output);
+                $("#count-cart").html( shoppingCart.countCart() );
+                $("#total-cart").html( shoppingCart.totalCart() );
+                document.getElementById("cart").value=JSON.stringify(shoppingCart.listCart());
+                document.getElementById("totalitems").value=shoppingCart.countCart();
+                document.getElementById("CartItems").innerHTML=shoppingCart.countCart();
+                document.getElementById("CartItems1").innerHTML=shoppingCart.countCart();
+                document.getElementById("CartItems2").innerHTML=shoppingCart.countCart();
+                document.getElementById("totalprice").value=shoppingCart.totalCart();
+            }
+
+            $("#show-cart").on("click", ".delete-item", function(event){
+                var name = $(this).attr("data-name");
+                shoppingCart.removeItemFromCartAll(name);
+                displayCart();
+            });
+
+            $("#show-cart").on("click", ".subtract-item", function(event){
+                var name = $(this).attr("data-name");
+                shoppingCart.removeItemFromCart(name);
+                displayCart();
+            });
+
+            $("#show-cart").on("click", ".plus-item", function(event){
+                
+                var name = $(this).attr("data-name");
+                shoppingCart.addItemToCart(name, 0, 1);
+                displayCart();
+                
+            });
+
+            $("#show-cart").on("change", ".item-count", function(event){
+                var name = $(this).attr("data-name");
+                var count = Number($(this).val());
+                shoppingCart.setCountForItem(name, count);
+                displayCart();
+            });
+
+
+            displayCart();
+
+
+            
+       /* copies a div to clipboard (currently disabled)
+
+        function copyDivToClipboard() {
+                    event.preventDefault();
+                
+                    var range = document.createRange();
+                    range.selectNode(document.getElementById("order ticket"));
+                    window.getSelection().removeAllRanges(); // clear current selection
+                    window.getSelection().addRange(range); // to select text
+                    document.execCommand("copy");
+                    window.getSelection().removeAllRanges();// to deselect
+
+
+                    alert("Order Copied!");
+                }
+
+        */
+
+        const myForm=documents.getElementById("orderform");
+
+        myForm.addEventListener("submit",(e)=>{
+            
+
+        
+        
+        });
+
+
+        </script>
+    </body>
+</html>
+{{end}}

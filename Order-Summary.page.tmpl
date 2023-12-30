@@ -1,0 +1,82 @@
+{{template "base" .}}
+
+{{define "content"}}
+{{$odr := index .Data "order"}}
+<html>        
+        <head>
+        <title></title>
+        
+    </head>
+    <body>
+<div class="container">
+    <img src="./static/images/logo.jpg" width="200px" style="border-radius: 50%;border:10px double black;text-align:left;">
+
+</div>
+
+
+
+<nav class="nav" style="border:font-size: large;">
+  <a class="nav-link active" aria-current="page" href="./" style="color:black;padding: .2in;">Home</a>
+  <a class="nav-link" href="./#Progress" style="padding: .2in; color:black">Progress</a>
+  <a class="nav-link" href="./#Our Work" style="padding: .2in; color:black">Our Work</a>
+  <a class="nav-link" href="./#Our Greens" style="padding: .2in; color:black">Our Greens</a>
+  <a class="nav-link" href="./#Why choose Watteh Greens?" style="padding: .2in;color:black">Why Choose Watteh Greens?</a>
+  <a class="nav-link" href="./#About us" style="padding: .2in;color: black">About us</a>
+  <a class="nav-link" href="#order Contact us"style="padding: .2in;color: black">Contact us</a><br />
+  
+ 
+  <a class="nav-link" href="/shop" style="padding: .2in;color: black">Visit Our Shop</a>
+  
+</nav>
+
+    
+
+<div class="container"  style="padding-top:140px;">
+            <h1 style="color:green">Your Order Summary</h1>
+            <br>
+            <br>
+            <h5 id="order"><b>Customer Name</b> : <span>{{$odr.Customername}}</span></h5>
+            <h5><b>Phone number</b> : <span>{{$odr.Phone}}</span></h5>
+            <h5 ><b>Address</b> : <span>{{$odr.Address}}</span></h5>
+            <br>
+            <br>
+            <h5 style="color:green" >Items in cart :</h5>
+            <br>
+            <table><thead><tr><b><th>Name</b></th><th><b>Price &ensp;</b></th><th><b>Count &ensp;</b></th><th><b>Subtotal</b></th></tr></thead>
+            {{range $odr.Cart}}
+            <tbody><tr><td>{{.Name}} &ensp;</td><td>{{.Price}} &ensp;  </td><td>{{.Count}} &ensp; </td><td>{{.Total}}</td></tr></tbody>
+            {{end}}
+            <br>
+            <tbody><tr><td>&ensp;</td><td><b>Total Items :</b>  </td><td>{{$odr.Items}}</td><td><b>Total Amount</b> : {{$odr.Price}}  &nbsp; taka</td></tr></tbody>
+            </table>
+
+            <br>
+            <br>
+           
+
+            <h1 style="color:green"> Order Placed Successfully!</h1>
+</div>
+
+
+
+
+<div class="container" Style="padding-top:30px;text-align:center">
+
+  <h2 ><a href="/shop"><span class="badge bg-dark text-success">Visit Our Store <br> For more orders</span></h2></a>
+
+</div>
+
+            
+    
+<h2 style="color:green;padding-top:50px;" id="order Contact us" ><b>Contact us<b></h2>
+
+    <div class="container" style="padding-top:50px;">
+              <div class="row">
+              <div class="col" style="padding-top:50px"><a href="https://www.facebook.com/watteh.greens" target="_blank"><img src="./static/images/Facebook.png" height=100  width=100 style="display:inline-block" ></a></div>
+              <div class="col" style="padding-top:50px"><a href="https://www.instagram.com/watteh.greens/?fbclid=IwAR1gGHi9CzhBBTpfDzUjm9gSgHN6WVrEcBy6oMlnGN_PIxdBpMNz2q8G8lE" target="_blank"><img src="./static/images/Instagram.png"  height=100 width=100 style="display:inline-block;padding-left: 20px;"></a></div>
+              <div class="col" style="padding-top:50px"><img src="./static/images/Gmail.png" height=100 width=100 style="display:inline-block;padding-left: 20px;" ><p style="font-size:large;color: rgb(22, 20, 18);">Watteh.Green@gmail.com</p></div>
+              <div class="col" style="padding-top:50px"><img src="./static/images/Phone.png" height=100 width=100 style="padding-left:20px"><p style="font-size:large;color: rgb(22, 20, 18);">+8801732669572</p></div>
+              
+    </div>
+ </html>   
+{{end}}
